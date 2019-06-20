@@ -1,0 +1,33 @@
+{
+  "name": "angular-japanese-numerals",
+  "version": "0.1.0",
+  "description": "Japanese numeral filter for AngularJS",
+  "main": "dist/angular-japanese-numerals.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basklein/angular-japanese-numerals.git"
+  },
+  "keywords": [
+    "kanji",
+    "numerals",
+    "japanese",
+    "angularjs",
+    "angular",
+    "filter"
+  ],
+  "author": "Bas Klein <basklein@basklein.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/basklein/angular-japanese-numerals/issues"
+  },
+  "homepage": "https://github.com/basklein/angular-japanese-numerals#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

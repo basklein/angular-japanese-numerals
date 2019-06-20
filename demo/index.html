@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>angular-japanese-numerals</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+	<script src="../dist/angular-japanese-numerals.min.js"></script>
+
+	<script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="appController">
+	<p>
+		{{ 11 | japaneseNumerals }} : 11 normal
+	</p>
+	<p>
+		{{ 17 | japaneseNumerals: true }} : 17 formal
+	</p>
+	<p>
+		{{ '151' | japaneseNumerals }} : '151' normal
+	</p>
+	<p>
+		{{ 302 | japaneseNumerals }} : 302 normal
+	</p>
+	<p>
+		{{ 2025 | japaneseNumerals }} : 2025 normal
+	</p>
+	<p>
+		{{ 10000 | japaneseNumerals }} : 10000 normal
+	</p>
+	<p>
+		{{ 10000000 | japaneseNumerals }} : 10000000 normal
+	</p>
+	<p>
+		{{ 9836703 | japaneseNumerals }} : 9836703 normal
+	</p>
+	<p>
+		{{ 2036521801 | japaneseNumerals }} : 2036521801 normal
+	</p>
+	<p>
+		{{ testString | japaneseNumerals }} : $scope.testString '469' normal
+	</p>
+	<p>
+		{{ testNumber | japaneseNumerals }} : $scope.testNumber 469 normal
+	</p>
+	<p>
+		{{ 0 | japaneseNumerals }} : 0 normal
+	</p>
+	<p>
+		{{ ' ' | japaneseNumerals }} : ' ' normal
+	</p>
+</body>
+</html>
