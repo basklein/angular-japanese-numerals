@@ -1,6 +1,6 @@
 /**
     @name: angular-japanese-numerals 
-    @version: 0.1.0 (21-06-2019) 
+    @version: 0.1.1 (23-06-2019) 
     @author: Bas Klein <basklein@basklein.com> 
     @url: https://github.com/basklein/angular-japanese-numerals#readme 
     @license: MIT
@@ -76,24 +76,25 @@ angular.module('angular-japanese-numerals').service('japaneseNumeralService', fu
     value = value.split('').reverse();
 
     var kanjiArray = [];
+    var totalRemainder = value.length % 4;
+    var highestPower = value.length - totalRemainder;
     for (var i = 0; i < value.length; i++) {
-      // Add '万' kanji if the value is equal to or greater than 10,000.
-      if (i === 4) {
-        kanjiArray.push(this.tens[4]);
-      }
-      // If the digit's a 0, ignore it and go to the next one.
-      if (value[i] == 0) {
+      /* If the digit's a 0, ignore it and go to the next one.
+      * Unless 'i' is the highest power of 4.
+      */
+      if (!(i === highestPower - 4 && totalRemainder === 0) && !(i === highestPower) && value[i] == 0) {
         continue;
       }
 
       // Calculate remainder to get power of 10 within current 10,000.
       var tenRemainder = i % 4;
+
       // Check if the value is a form of 1000 or 10,000.
       var isSenOrMan = (i >= 4 && tenRemainder === 0 || tenRemainder === 3);
       // If this is not the first digit, add the correct power of 10 kanji.
       if (i > 0) {
-        if (tenRemainder === 1 && i > 5) {
-          kanjiArray.push(this.tens[i - 1]);
+        if (tenRemainder === 0 && i > 3) {
+          kanjiArray.push(this.tens[i]);
         }
         // Use the formal form of 10 if the formal toggle is on.
         if (tenRemainder === 1 && formal) {

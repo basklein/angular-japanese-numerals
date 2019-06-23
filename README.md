@@ -1,3 +1,7 @@
+[![npm version](https://badge.fury.io/js/angular-japanese-numerals.svg)](https://badge.fury.io/js/angular-japanese-numerals)
+[![GitHub issues](https://img.shields.io/github/issues/basklein/angular-japanese-numerals.svg?style=flat-square)](https://github.com/basklein/angular-japanese-numerals/issues)
+[![GitHub license](https://img.shields.io/github/license/basklein/angular-japanese-numerals.svg?style=flat-square)](https://github.com/basklein/angular-japanese-numerals/blob/master/LICENSE)
+
 # angular-japanese-numerals
 Japanese numeral filter for AngularJS
 
