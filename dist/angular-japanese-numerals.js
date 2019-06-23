@@ -1,6 +1,6 @@
 /**
     @name: angular-japanese-numerals 
-    @version: 0.1.0 (23-06-2019) 
+    @version: 0.1.1 (23-06-2019) 
     @author: Bas Klein <basklein@basklein.com> 
     @url: https://github.com/basklein/angular-japanese-numerals#readme 
     @license: MIT
