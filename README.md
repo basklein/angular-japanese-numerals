@@ -54,5 +54,26 @@ Result:
 </p>
 ```
 
+Javascript:
+```javascript
+angular.module('app', ['angular-japanese-numerals']);
+
+angular.module('app')
+    .controller('appController', function ($scope, $filter) {
+        $scope.javascriptNormal = $filter('japaneseNumerals')(469);
+        $scope.javascriptFormal = $filter('japaneseNumerals')(469, true);
+    });
+```
+
+Result:
+```html
+<p>
+  四百六十九 : $scope.javascriptNormal 469 normal
+</p>
+<p>
+  四百六拾九 : $scope.javascriptFormal 469 formal
+</p>
+```
+
 # LICENSE
 MIT
