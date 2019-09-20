@@ -6,7 +6,7 @@
 Japanese numeral filter for AngularJS
 
 ## Demo
-[demo on plnkr](https://plnkr.co/edit/GZj6hyUirAyvUDEUNrdG?p=preview)
+[demo on plnkr](https://plnkr.co/edit/eK0dOA?p=info)
 
 ## Usage
 
