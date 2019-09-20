@@ -39,6 +39,9 @@ HTML
 <p>
   {{ '151' | japaneseNumerals }} : '151' normal
 </p>
+<p>
+  {{ 10.51 | japaneseNumerals: false: true }} : 10.51 normal buFraction
+</p>
 ```
 
 Result:
@@ -51,6 +54,9 @@ Result:
 </p>
 <p>
   百五十一 : '151' normal
+</p>
+<p>
+  十・五分一厘 : 10.51 normal
 </p>
 ```
 
