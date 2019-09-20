@@ -2,9 +2,7 @@ module.exports = function(grunt) {
 
     var banner = '/**\n    @name: <%= pkg.name %> \n    @version: <%= pkg.version %> (<%= grunt.template.today("dd-mm-yyyy") %>) \n    @author: <%= pkg.author %> \n    @url: <%= pkg.homepage %> \n    @license: <%= pkg.license %>\n*/\n';
 
-    var sources = [
-                        'src/angular-japanese-numerals.js'
-                    ];
+    var sources = ['src/**/*', 'src/*'];
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
