@@ -3,10 +3,19 @@
 [![GitHub license](https://img.shields.io/github/license/basklein/angular-japanese-numerals.svg?style=flat-square)](https://github.com/basklein/angular-japanese-numerals/blob/master/LICENSE)
 
 # angular-japanese-numerals
-Japanese numeral filter for AngularJS
+Japanese numeral service and filters for AngularJS
 
 ## Demo
 [demo on plnkr](https://plnkr.co/edit/eK0dOA?p=info)
+
+## Description
+This is a service for AngularJS that converts common Arabic numerals to Japanese numerals. This service can be used as is, or through the filters `japaneseNumerals` and `simpleJapaneseNumerals`.
+
+The `japaneseNumerals` filter will convert the Arabic numerals to Japanese numerals, including the power of ten kanji characters.
+
+The `simpleJapaneseNumerals` filter will convert the Arabic numerals to Japanese numerals, using the '〇' character and positions instead of the power of ten kanji characters.
+
+Both filters can be adjusted with parameters as described in the 'Documentation' section.
 
 ## Usage
 
@@ -15,16 +24,50 @@ Japanese numeral filter for AngularJS
     2. via [downloaded files](https://github.com/basklein/angular-japanese-numerals/master)
 2. Add `angular-japanese-numerals` to your application's module dependencies.
 3. Include dependencies and angular-japanese-numerals in your HTML.
-    1. When using npm
+    - When using npm
     ```html
     <script src="node_modules/angular-japanese-numerals/dist/angular-japanese-numerals.min.js"></script>
     ```
-
-    2. When using downloaded files
+    - When using downloaded files
     ```html
     <script src="YOUR_PATH/angular-japanese-numerals.min.js"></script>
     ```
-4. Use the angular filter `japaneseNumerals` like this: `{{ number | japaneseNumerals }}`
+4. Use the angular filters `japaneseNumerals` and `simpleJapaneseNumerals`, or use the angular service `japaneseNumeralService`.
+
+## Documentation
+
+### Services
+
+#### japaneseNumeralService
+##### characters
+Object containing all Japanese numeral characters.
+
+##### convertToJapaneseNumerals
+Converts a number or string of Arabic numerals to a string of Japanese numerals with power of ten characters.
+* `@param {number | string}` value The value to convert to Japanese numerals.
+* `@param {bool=} formal` Optional toggle to use formal numbers.
+* `@param {bool=} buFraction` Optional toggle to use bu fractions instead of wari fractions.
+* `@return {string}` A string of Japanese numerals converted from the original value.
+
+##### convertToSimpleJapaneseNumerals
+Converts a number or string of Arabic numerals to a string of Japanese numerals without the power of ten characters.
+* `@param {number | string}` value The value to convert to Japanese numerals.
+* `@param {bool=} formal` Optional toggle to use formal numbers.
+* `@return {string}` A string of Japanese numerals converted from the original value.
+
+### Filters
+##### japaneseNumerals
+Converts a number or string of Arabic numerals to a string of Japanese numerals with power of ten characters.
+* `@param {number | string} input` The value to convert to Japanese numerals.
+* `@param {bool=} formal` Optional toggle to use formal numbers.
+* `@param {bool=} buFraction` Optional toggle to use bu fractions instead of wari fractions.
+* `@return {string}` A string of Japanese numerals converted from the original value.
+
+##### simpleJapaneseNumerals
+Converts a number or string of Arabic numerals to a string of Japanese numerals without power of ten characters.
+* `@param {number | string} input` The value to convert to Japanese numerals.
+* `@param {bool=} formal` Optional toggle to use formal numbers.
+* `@return {string}` A string of Japanese numerals converted from the original value.
 
 ## Sample
 
