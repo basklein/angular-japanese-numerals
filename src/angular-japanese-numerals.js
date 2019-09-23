@@ -1,6 +1,9 @@
 angular.module('angular-japanese-numerals', []);
 
 angular.module('angular-japanese-numerals').service('japaneseNumeralService', function () {
+  /**
+  * Object containing all Japanese numeral characters.
+  */
   this.characters = {
     integers:{
       normal:{
@@ -69,7 +72,7 @@ angular.module('angular-japanese-numerals').service('japaneseNumeralService', fu
   };
 
   /**
-  * Converts a number or string of Arabic numerals to a string of Japanese numerals.
+  * Converts a number or string of Arabic numerals to a string of Japanese numerals with power of ten characters.
   * @param {number | string} value The value to convert to Japanese numerals.
   * @param {bool=} formal Optional toggle to use formal numbers.
   * @param {bool=} buFraction Optional toggle to use bu fractions instead of wari fractions.
@@ -88,7 +91,7 @@ angular.module('angular-japanese-numerals').service('japaneseNumeralService', fu
     // Convert input to string and check if not empty.
     value = value.toString() || '';
 
-    // The value is split into integers and decimals
+    // The value is split into integers and decimals.
     value = value.split('.');
     integers = value[0] || '';
     decimals = value[1] || '';
@@ -174,12 +177,80 @@ angular.module('angular-japanese-numerals').service('japaneseNumeralService', fu
     // The combined strings are connected through a connecting symbol.
     return (integers + (decimals ? '・' : '') + decimals);
   };
+
+  /**
+  * Converts a number or string of Arabic numerals to a string of Japanese numerals without the power of ten characters.
+  * @param {number | string} value The value to convert to Japanese numerals.
+  * @param {bool=} formal Optional toggle to use formal numbers.
+  * @return {string} A string of Japanese numerals converted from the original value.
+  */
+  this.convertToSimpleJapaneseNumerals = function (value, formal) {
+    // Default optional parameters.
+    formal = formal || false;
+
+    // If value is null, empty or zero, return the zero kanji.
+    if (value == 0) {
+      return this.characters.zero;
+    }
+
+    // Convert input to string and check if not empty.
+    value = value.toString() || '';
+
+    // The value is split into integers and decimals.
+    value = value.split('.');
+    integers = value[0] || '';
+    decimals = value[1] || '';
+
+    integers = integers.split('');
+    decimals = decimals.split('');
+
+    var integerKanjiArray = [];
+    for (var i = 0; i < integers.length; i++) {
+      if (integers[i] == 0) {
+        integerKanjiArray.push(this.characters.zero);
+        continue;
+      }
+
+      /* Add in the 1-9 numeral characters.
+      * Use the formal form if the formal toggle is on.
+      */
+      if (formal) {
+        integerKanjiArray.push(this.characters.integers.formal[integers[i]]);
+      } else {
+        integerKanjiArray.push(this.characters.integers.normal[integers[i]]);
+        }
+    }
+
+    var decimalKanjiArray = [];
+    for (var i = 0; i < decimals.length; i++) {
+      if (decimals[i] == 0) {
+        decimalKanjiArray.push(this.characters.zero);
+        continue;
+      }
+
+      /* Add in the 1-9 numeral characters.
+      * Use the formal form if the formal toggle is on.
+      */
+      if (formal) {
+        decimalKanjiArray.push(this.characters.integers.formal[decimals[i]]);
+      } else {
+        decimalKanjiArray.push(this.characters.integers.normal[decimals[i]]);
+      }
+    }
+
+    // The final arrays of characters are combined.
+    var integers = integerKanjiArray.join('');
+    var decimals = decimalKanjiArray.join('');
+
+    // The combined strings are connected through a connecting symbol.
+    return (integers + (decimals ? '・' : '') + decimals);
+  };
 });
 
 angular.module('angular-japanese-numerals').filter('japaneseNumerals', ['japaneseNumeralService', function (japaneseNumeralService) {
 
   /**
-  * Converts a number or string of Arabic numerals to a string of Japanese numerals.
+  * Converts a number or string of Arabic numerals to a string of Japanese numerals with power of ten characters.
   * @param {number | string} input The value to convert to Japanese numerals.
   * @param {bool=} formal Optional toggle to use formal numbers.
   * @param {bool=} buFraction Optional toggle to use bu fractions instead of wari fractions.
@@ -187,5 +258,18 @@ angular.module('angular-japanese-numerals').filter('japaneseNumerals', ['japanes
   */
   return function (input, formal, buFraction) {
     return japaneseNumeralService.convertToJapaneseNumerals(input, formal, buFraction);
+  };
+}]);
+
+angular.module('angular-japanese-numerals').filter('simpleJapaneseNumerals', ['japaneseNumeralService', function (japaneseNumeralService) {
+
+  /**
+  * Converts a number or string of Arabic numerals to a string of Japanese numerals without power of ten characters.
+  * @param {number | string} input The value to convert to Japanese numerals.
+  * @param {bool=} formal Optional toggle to use formal numbers.
+  * @return {string} A string of Japanese numerals converted from the original value.
+  */
+  return function (input, formal) {
+    return japaneseNumeralService.convertToSimpleJapaneseNumerals(input, formal);
   };
 }]);

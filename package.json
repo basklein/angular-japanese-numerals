@@ -1,7 +1,7 @@
 {
   "name": "angular-japanese-numerals",
-  "version": "1.0.0",
-  "description": "Japanese numeral filter for AngularJS",
+  "version": "1.1.0",
+  "description": "Japanese numeral service and filters for AngularJS",
   "main": "dist/angular-japanese-numerals.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,8 @@
     "japanese",
     "angularjs",
     "angular",
-    "filter"
+    "filter",
+    "service"
   ],
   "author": "Bas Klein <basklein@basklein.com>",
   "license": "MIT",
